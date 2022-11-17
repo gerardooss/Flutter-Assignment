@@ -1,5 +1,6 @@
 # counter_7
-Assignment 7 - Platform Based Programming
+**Assignment 7** - *Platform Based Programming*  
+&rarr; basic elements on Flutter
 
 ## Perbedaan Stateless Widget dan Stateful Widget
 - Secara sederhana, `Stateless Widget` adalah widget yang sudah diinisiasi sejak awal dan bersifat statis. Tampilan antarmuka sebuah aplikasi dengan stateless widget tidak dipengaruhi oleh user action atu dengan kata lain mungkin terdapat pembaruan tampilan.
@@ -33,3 +34,53 @@ Perbedaan utama terletak pada proses inisiasinya. `const` mengharuskan sebuah va
 - Bonus: 
   - mengubah widget `FloatingActionButton` untuk decrement button sebagai child dari widget `Visibility`
   - mengatur widget `Visibility` agar muncul ketika `_counter != 0`
+
+<br />
+
+# Tugas 8
+**Assignment 8** - *Platform Based Programming*  
+&rarr; Flutter Form
+
+## Perbedaan `Navigator.push` dan `Navigator.pushReplacement`.
+- `Navigator.push` berfungsi untuk page baru dengan cara membuat route baru, tetapi tidak menghapus route sebelumnya melainkan disimpan di stack.
+- `Navigator.pushReplacement` memiliki fungsi yang sama, namun akan membuang route yang dibuang sebelumnya setelah membuat route baru.
+
+## Widget yang dipakai di proyek kali ini dan fungsinya.
+- Drawer  
+Merupakan widget untuk menampilkan hamburger menu.
+- ListTile  
+Berguna untuk menampilkan sebuah widget yang dapat memiliki beberapa widget di dalamnya.
+- Form  
+Berguna untuk menampilkan field yang digunakan menerima input user.
+- TextFormField  
+Field yang menerima data input berupa teks dari user.
+- DropdownButtonField  
+Field berupa dropdown yang menyediakan opsi tersedia.
+- Card  
+Berfungsi untuk menampilkan data dalam bentuk card.
+
+## Jenis-jenis event yang ada pada Flutter
+- onPressesd
+- onChanged
+- onSaved
+- opTap
+
+## Cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+Navigator berfungsi untuk menyimpan stack berisi route yang digunakan dalam aplikasi. Route ini merupakan sebuah widget halaman baru. `Navigator.push` berfungsi untuk mengarahkan ke halaman baru, sedangakan `Navigator.pop` digunakan untuk kembali ke halaman sebelumnya.
+
+
+## Implementasi checklist
+- Menambahkan `Drawer` yang berisikan tiga opsi halaman yang dapat dipilih: Counter, Add Budget, dan View Budget.
+- Menambahkan halaman untuk Add Budget:
+  - Menambahkan drawer
+  - Membuat file baru `add_budget.dart`
+  - Menambahkan widget sesuai deskripsi soal - `Form` yang berisi `TextFormField` dan `DropdownButtonFormField`
+  - Menghubungan halaman ini dengan drawer setiap page
+- Membuat Object:
+  - Membuat file `object01.dart` yang dikhususkan sebagai file pembuatan objek yang digunakan dalam tugas ini
+  - Menginisiasi objek dengan atribut yang diperlukan (judul, nominal, tipe)
+  - Membuat constructor
+  - Membuat list yang akan digunakan untuk menampung object
+- Menambahkan halaman View Budget:
+  - Menambahkan drawer
+  - Membuat widget `Container` berisikan `ListView.builder` yang kemudian me-return widget `Card`

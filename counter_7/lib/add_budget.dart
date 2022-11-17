@@ -16,7 +16,20 @@ class _MyFormPageState extends State<MyFormPage> {
   final _titleController = TextEditingController();
   final _budgetController = TextEditingController();
   final _typeController = TextEditingController();
-  String _budgetTitle = "";
+  final _dateController = TextEditingController();
+
+  Future<Function()?> chooseDate({required BuildContext context}) async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+    );
+    if (date != null) {
+      _dateController.text = date.toString();
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +137,32 @@ class _MyFormPageState extends State<MyFormPage> {
                   const SizedBox(
                     height: 10,
                   ),
+                  TextFormField(
+                    controller: _dateController,
+                    decoration: const InputDecoration(
+                      icon: const Icon(Icons.date_range),
+                      labelText: 'Date Field',
+                      border: OutlineInputBorder(),
+                    ),
+                    onTap: () {
+                      chooseDate(context: context);
+                    },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please select the date!';
+                      } else if (DateTime.tryParse(value) == null) {
+                        return 'Invalid date';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   DropdownButtonFormField<String>(
                     icon: const Icon(Icons.keyboard_arrow_down),
                     decoration: const InputDecoration(
-                      labelText: 'Type Drowdown',
+                      labelText: 'Type Dropdown',
                       border: OutlineInputBorder(),
                       icon: Icon(
                         Icons.arrow_drop_down_circle,
@@ -158,11 +193,11 @@ class _MyFormPageState extends State<MyFormPage> {
                     },
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 80,
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all(Colors.green),
                     ),
                     onPressed: (() {
                       if (_formKey.currentState!.validate()) {
@@ -170,7 +205,8 @@ class _MyFormPageState extends State<MyFormPage> {
                         objectList.add(Object01(
                             name: _titleController.text,
                             nominal: _budgetController.text,
-                            type: _typeController.text));
+                            type: _typeController.text,
+                            date: _dateController.text));
 
                         _titleController.clear();
                         _budgetController.clear();
@@ -190,4 +226,4 @@ class _MyFormPageState extends State<MyFormPage> {
   }
 }
 
-void addObject01(String name, String nominal, String type) {}
+void addObject01(String name, String nominal, String type, String date) {}

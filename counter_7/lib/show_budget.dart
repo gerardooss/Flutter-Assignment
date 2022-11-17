@@ -66,8 +66,13 @@ class _MyViewPageState extends State<MyViewPage> {
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
+                    leading: Icon(Icons.face),
                     title: Text(objectList[index].getName),
-                    subtitle: Text(objectList[index].getNominal),
+                    subtitle: Text("Rp" +
+                        objectList[index].getNominal +
+                        "     (" +
+                        objectList[index].getDate.toString().substring(0, 11) +
+                        ")"),
                     trailing: Text(objectList[index].getType),
                   ),
                 );
