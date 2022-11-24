@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/main.dart';
-import 'package:counter_7/show_budget.dart';
-import 'package:counter_7/object01.dart';
+import 'package:counter_7/utils/drawer.dart';
+import 'package:counter_7/models/object01.dart';
 import 'package:flutter/services.dart';
 
 class MyFormPage extends StatefulWidget {
@@ -31,51 +30,14 @@ class _MyFormPageState extends State<MyFormPage> {
     return null;
   }
 
+  // --------- Build ---------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Text('Add Budget'),
         ),
-        drawer: Drawer(
-          child: Column(
-            children: [
-              // Menambahkan clickable menu
-              ListTile(
-                title: const Text('Counter'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Add Budget'),
-                onTap: () {
-                  // Route menu ke halaman form
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyFormPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('View Budget'),
-                onTap: () {
-                  // Route menu ke halaman form
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyViewPage()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: AsgDrawer(),
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -88,11 +50,9 @@ class _MyFormPageState extends State<MyFormPage> {
                     decoration: InputDecoration(
                       hintText: "Yoshinoya",
                       labelText: "Title Field",
-                      // Menambahkan icon agar lebih intuitif
                       icon: const Icon(
                         Icons.title,
                       ),
-                      // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
@@ -116,11 +76,9 @@ class _MyFormPageState extends State<MyFormPage> {
                     decoration: InputDecoration(
                       hintText: "65000",
                       labelText: "Nominal Field",
-                      // Menambahkan icon agar lebih intuitif
                       icon: const Icon(
                         Icons.attach_money,
                       ),
-                      // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),

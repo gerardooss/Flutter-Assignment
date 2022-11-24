@@ -1,3 +1,4 @@
+// Income-Outcome Object [Assignment 8]
 class Object01 {
   String name;
   String nominal;
