@@ -84,3 +84,32 @@ Navigator berfungsi untuk menyimpan stack berisi route yang digunakan dalam apli
 - Menambahkan halaman View Budget:
   - Menambahkan drawer
   - Membuat widget `Container` berisikan `ListView.builder` yang kemudian me-return widget `Card`
+
+<br />
+
+# Tugas 9
+**Assignment 9** - *Platform Based Programming*  
+&rarr; Web Service Integration
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik?
+Ya, pengambilan data JSON isa dilakukan tanpa membuat model terlebih dahulu namun hal ini tidak lebih baik daripada pengambilan data yang dilakaukand engan pembuatan model terlebih dahulu. Alasannya adalah, pengambilan data tanpa pembuatan model tidak dapat mengetahui struktur data yang diambil.
+
+## Widget yang dipakai di proyek kali ini dan jelaskan fungsinya.
+- `InkWell`  
+  Widget area yang memberikan respons ketika diklik.
+- `ListView`  
+  Widget yang dapat memiliki beberapa widget di dalamnya.
+- `FutureBuilder`  
+  Updating child dengan hasil future
+
+## Mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+- Melakukan HTTP request ke server dengan menggunakan library `http`.
+- Server Django memberikan response berupa views yang sesuai.
+- Melakukan decoding terhadap bytes yang diterima menggunakan `jsonDecode` kemudian digunakan untuk menginisialisasi model `WatchList`
+
+## Implementasikan checklist di atas.
+- Menambahkan page baru untuk menampilkan watchlist dan menambahkan ke drawer.
+- Menambahkan page baru untuk menampilkan detail movie.
+- Membuat models `WatchList`
+- Membuat code untuk melakukan fetching data dari server **bugs detected here*
+- Melakukan refactoring file
